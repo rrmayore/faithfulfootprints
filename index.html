@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FaithfulFootprints | The Mayore Family</title>
+    <meta name="description" content="Join the Mayore family on their journey of faith, love and adventure.">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #8B5D33;
+            --primary-light: #C49A6C;
+            --secondary: #3F5E5A;
+            --secondary-light: #A6BBB8;
+            --accent: #D98841;
+            --light: #F4F1E8;
+            --dark: #2C2417;
+            --text: #433422;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text);
+            background-color: var(--light);
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .hero-section {
+            height: 100vh;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1511895426328-dc8714191300?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+        .about-image {
+            background-image: url('https://images.unsplash.com/photo-1519011985187-444d62641929?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1364&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.25rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-light);
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.25rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        
+        .btn-secondary:hover {
+            background-color: var(--secondary-light);
+            transform: translateY(-2px);
+        }
+        
+        .nav-link {
+            position: relative;
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--accent);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: var(--accent);
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .section-heading {
+            position: relative;
+            display: inline-block;
+            color: var(--primary);
+            margin-bottom: 2rem;
+        }
+        
+        .section-heading::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            bottom: -10px;
+            left: 0;
+            background-color: var(--accent);
+        }
+        
+        .image-card {
+            overflow: hidden;
+            border-radius: 0.5rem;
+            position: relative;
+        }
+        
+        .image-card img {
+            transition: transform 0.5s ease;
+        }
+        
+        .image-card:hover img {
+            transform: scale(1.05);
+        }
+        
+        .gallery-tab {
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+            transition: all 0.3s ease;
+            background-color: var(--secondary-light);
+            color: var(--dark);
+        }
+        
+        .gallery-tab.active, .gallery-tab:hover {
+            background-color: var(--secondary);
+            color: white;
+        }
+        
+        .content-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .sticky-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            background-color: rgba(44, 36, 23, 0.9);
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .navbar-hidden {
+            transform: translateY(-100%);
+        }
+        
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            height: 100vh;
+            background-color: var(--dark);
+            z-index: 200;
+            transition: right 0.3s ease;
+            padding: 2rem;
+        }
+        
+        .mobile-menu.active {
+            right: 0;
+        }
+        
+        .mobile-nav-link {
+            display: block;
+            color: var(--light);
+            font-size: 1.25rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 150;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .blog-card {
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+        
+        .timeline-container {
+            position: relative;
+            padding-left: 2rem;
+        }
+        
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 2px;
+            height: 100%;
+            background-color: var(--primary-light);
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-bottom: 2rem;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -2rem;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: var(--accent);
+            border: 3px solid var(--light);
+        }
+        
+        .social-icon {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin: 0 0.5rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            color: var(--accent);
+            transform: translateY(-3px);
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--primary-light);
+            border-radius: 0.25rem;
+            background-color: white;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(139, 93, 51, 0.2);
+        }
+        
+        .bg-faith {
+            background-color: var(--secondary-light);
+            background-image: url('https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2938&q=80');
+            background-size: cover;
+            background-position: center;
+            background-blend-mode: overlay;
+        }
+        
+        .family-member-card {
+            border-radius: 0.5rem;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        
+        .family-member-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .scroll-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 90;
+        }
+        
+        .scroll-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        @media (max-width: 768px) {
+            .section-heading::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="flex justify-end">
+            <button id="closeMenu" class="text-white text-2xl focus:outline-none">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="mt-10">
+            <a href="#home" class="mobile-nav-link">Home</a>
+            <a href="#about" class="mobile-nav-link">About Us</a>
+            <a href="#blog" class="mobile-nav-link">Blog</a>
+            <a href="#gallery" class="mobile-nav-link">Gallery</a>
+            <a href="#faith" class="mobile-nav-link">Faith Corner</a>
+            <a href="#contact" class="mobile-nav-link">Contact</a>
+        </div>
+        <div class="mt-10 flex justify-center">
+            <a href="#" class="social-icon mx-2"><i class="fab fa-facebook"></i></a>
+            <a href="#" class="social-icon mx-2"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-icon mx-2"><i class="fab fa-youtube"></i></a>
+            <a href="#" class="social-icon mx-2"><i class="fab fa-twitter"></i></a>
+        </div>
+    </div>
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Navigation -->
+    <nav class="absolute top-0 left-0 w-full py-6 z-50 transition-all duration-300" id="navbar">
+        <div class="content-container px-4 md:px-8 flex justify-between items-center">
+            <a href="#home" class="text-white text-2xl md:text-3xl font-bold">
+                <span class="text-white font-bold">Faithful</span><span class="text-yellow-400">Footprints</span>
+            </a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">About Us</a>
+                <a href="#blog" class="nav-link">Blog</a>
+                <a href="#gallery" class="nav-link">Gallery</a>
+                <a href="#faith" class="nav-link">Faith Corner</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+            <button id="menuButton" class="md:hidden text-white text-2xl focus:outline-none">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section flex items-center justify-center text-center">
+        <div class="content-container px-4 md:px-8">
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
+                The Mayore Family
+            </h1>
+            <p class="text-xl md:text-2xl text-white mb-8 max-w-3xl mx-auto">
+                "Because we believe family is our world"
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                <a href="#about" class="btn-primary">Meet Our Family</a>
+                <a href="#blog" class="btn-secondary">Read Our Stories</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="content-container px-4 md:px-8">
+            <div class="text-center mb-12">
+                <h2 class="section-heading text-3xl md:text-4xl font-bold mb-4">Our Family Story</h2>
+                <p class="max-w-2xl mx-auto text-lg">
+                    Welcome to our family's journey of faith, love, and adventure. We are the Mayore family - devoted to each other, our faith, and creating memories that last a lifetime.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center mb-16">
+                <div class="about-image rounded-lg h-96"></div>
+                <div>
+                    <h3 class="text-2xl font-bold mb-4 text-primary">Our Love Story</h3>
+                    <p class="mb-4">
+                        Richard and Betty's journey began when they met through their church community. Their shared faith and values created an unbreakable bond that blossomed into love.
+                    </p>
+                    <p class="mb-4">
+                        On May 2, 1999, they exchanged vows and embarked on a beautiful journey of marriage, committing to build a family rooted in their Seventh-day Adventist faith.
+                    </p>
+                    <p>
+                        Over the years, God blessed them with three wonderful children - Shirley, Sika, and their youngest daughter. Together, they've built a life centered around faith, family values, and the joy of experiencing God's creation through their adventures.
+                    </p>
+                </div>
+            </div>
+
+            <div class="timeline-container mb-16">
+                <h3 class="text-2xl font-bold mb-6 text-primary">Our Family Timeline</h3>
+                
+                <div class="timeline-item">
+                    <div class="mb-2">
+                        <h4 class="text-xl font-bold text-secondary">May 2, 1999</h4>
+                        <p class="text-gray-600">Wedding Day</p>
+                    </div>
+                    <p>Richard and Betty joined their lives together in holy matrimony, beginning their journey as husband and wife.</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="mb-2">
+                        <h4 class="text-xl font-bold text-secondary">January 6, 2000</h4>
+                        <p class="text-gray-600">First Child</p>
+                    </div>
+                    <p>Shirley Mayore was born, bringing immense joy as their firstborn daughter.</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="mb-2">
+                        <h4 class="text-xl font-bold text-secondary">November 26, 2004</h4>
+                        <p class="text-gray-600">Second Child</p>
+                    </div>
+                    <p>Sika Mayore joined the family as their second child, adding more love and laughter to their home.</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="mb-2">
+                        <h4 class="text-xl font-bold text-secondary">September 12, 2009</h4>
+                        <p class="text-gray-600">Third Child</p>
+                    </div>
+                    <p>Their beautiful youngest daughter was born, completing their family of five.</p>
+                </div>
+            </div>
+
+            <h3 class="text-2xl font-bold mb-6 text-primary text-center">Meet Our Family</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+                <!-- Richard -->
+                <div class="family-member-card bg-white shadow-lg">
+                    <div class="h-64 bg-gray-300 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1544723795-3fb6469f5b39?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2835&q=80" alt="Richard Mayore" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-4">
+                        <h4 class="text-lg font-bold">Richard Mayore</h4>
+                        <p class="text-sm text-gray-600">Father</p>
+                        <p class="mt-2 text-sm">A loving husband and devoted father who leads our family with wisdom and faith.</p>
+                    </div>
+                </div>
+                
+                <!-- Betty -->
+                <div class="family-member-card bg-white shadow-lg">
+                    <div class="h-64 bg-gray-300 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2787&q=80" alt="Betty Buyuka" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-4">
+                        <h4 class="text-lg font-bold">Betty Buyuka</h4>
+                        <p class="text-sm text-gray-600">Mother</p>
+                        <p class="mt-2 text-sm">The heart of our home who nurtures our family with love and grace.</p>
+                    </div>
+                </div>
+                
+                <!-- Shirley -->
+                <div class="family-member-card bg-white shadow-lg">
+                    <div class="h-64 bg-gray-300 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2787&q=80" alt="Shirley Mayore" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-4">
+                        <h4 class="text-lg font-bold">Shirley Mayore</h4>
+                        <p class="text-sm text-gray-600">Daughter (Born: Jan 6, 2000)</p>
+                        <p class="mt-2 text-sm">Our firstborn with a creative spirit and compassionate heart.</p>
+                    </div>
+                </div>
+                
+                <!-- Sika -->
+                <div class="family-member-card bg-white shadow-lg">
+                    <div class="h-64 bg-gray-300 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1528892952291-009c663ce843?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2944&q=80" alt="Sika Mayore" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-4">
+                        <h4 class="text-lg font-bold">Sika Mayore</h4>
+                        <p class="text-sm text-gray-600">Son (Born: Nov 26, 2004)</p>
+                        <p class="mt-2 text-sm">Our energetic son who brings joy and laughter to our family.</p>
+                    </div>
+                </div>
+                
+                <!-- Youngest Daughter -->
+                <div class="family-member-card bg-white shadow-lg">
+                    <div class="h-64 bg-gray-300 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1545238329-bde8c322e1a3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2806&q=80" alt="Youngest Daughter" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-4">
+                        <h4 class="text-lg font-bold">Youngest Daughter</h4>
+                        <p class="text-sm text-gray-600">Daughter (Born: Sep 12, 2009)</p>
+                        <p class="mt-2 text-sm">Our youngest blessing who completes our family with her sweet spirit.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="py-20 bg-gray-100">
+        <div class="content-container px-4 md:px-8">
+            <div class="text-center mb-12">
+                <h2 class="section-heading text-3xl md:text-4xl font-bold mb-4">Our Family Journal</h2>
+                <p class="max-w-2xl mx-auto text-lg">
+                    Follow along as we share our family travels, spiritual reflections, and everyday moments that make life beautiful.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Blog Post 1 -->
+                <div class="blog-card bg-white">
+                    <div class="h-64 bg-gray-300 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80" alt="Mountain View" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <span class="bg-primary-light text-white text-xs px-2 py-1 rounded-full">Travel</span>
+                            <span class="text-gray-500 text-sm ml-auto">March 15, 2023</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Our Family Adventure in the Mountains</h3>
+                        <p class="text-gray-600 mb-4">
+                            Last weekend, we packed our bags and headed to the mountains for a family retreat. The views were breathtaking...
+                        </p>
+                        <a href="#" class="text-primary font-medium hover:text-accent transition duration-300">Read More →</a>
+                    </div>
+                </div>
+                
+                <!-- Blog Post 2 -->
+                <div class="blog-card bg-white">
+                    <div class="h-64 bg-gray-300 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1472746729193-36ad213ac4a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2669&q=80" alt="Sabbath Reflections" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <span class="bg-secondary-light text-white text-xs px-2 py-1 rounded-full">Faith</span>
+                            <span class="text-gray-500 text-sm ml-auto">February 28, 2023</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Sabbath Reflections: Finding Rest in a Busy World</h3>
+                        <p class="text-gray-600 mb-4">
+                            In today's fast-paced world, the Sabbath offers us a sacred opportunity to pause and reconnect...
+                        </p>
+                        <a href="#" class="text-primary font-medium hover:text-accent transition duration-300">Read More →</a>
+                    </div>
+                </div>
+                
+                <!-- Blog Post 3 -->
+                <div class="blog-card bg-white">
+                    <div class="h-64 bg-gray-300 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1604537466608-109fa2f16c3b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2938&q=80" alt="Family Cooking" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <span class="bg-accent text-white text-xs px-2 py-1 rounded-full">Family Life</span>
+                            <span class="text-gray-500 text-sm ml-auto">January 12, 2023</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Cooking Together: Family Recipes We Love</h3>
+                        <p class="text-gray-600 mb-4">
+                            The kitchen is the heart of our home. Here are some of our favorite family recipes that bring us together...
+                        </p>
+                        <a href="#" class="text-primary font-medium hover:text-accent transition duration-300">Read More →</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <a href="#" class="btn-primary">View All Posts</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20 bg-white">
+        <div class="content-container px-4 md:px-8">
+            <div class="text-center mb-12">
+                <h2 class="section-heading text-3xl md:text-4xl font-bold mb-4">Our Gallery</h2>
+                <p class="max-w-2xl mx-auto text-lg">
+                    Explore our family adventures, milestones, and cherished moments through photos and videos.
+                </p>
+            </div>
+            
+            <div class="flex flex-wrap justify-center gap-3 mb-8">
+                <button class="gallery-tab active" data-category="all">All</button>
+                <button class="gallery-tab" data-category="travel">Travel</button>
+                <button class="gallery-tab" data-category="family">Family Moments</button>
+                <button class="gallery-tab" data-category="church">Church Events</button>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <!-- Gallery Item 1 -->
+                <div class="image-card" data-category="travel">
+                    <img src="https://images.unsplash.com/photo-1506197603052-3cc9c3a201bd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80" alt="Beach Vacation" class="w-full h-64 object-cover">
+                </div>
+                
+                <!-- Gallery Item 2 -->
+                <div class="image-card" data-category="family">
+                    <img src="https://images.unsplash.com/photo-1578496479531-32e296d5c6e1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2787&q=80" alt="Family Dinner" class="w-full h-64 object-cover">
+                </div>
+                
+                <!-- Gallery Item 3 -->
+                <div class="image-card" data-category="church">
+                    <img src="https://images.unsplash.com/photo-1596456838897-9bd1cdad8faa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2736&q=80" alt="Church Service" class="w-full h-64 object-cover">
+                </div>
+                
+                <!-- Gallery Item 4 -->
+                <div class="image-card" data-category="travel">
+                    <img src="https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80" alt="Mountain Hike" class="w-full h-64 object-cover">
+                </div>
+                
+                <!-- Gallery Item 5 -->
+                <div class="image-card" data-category="family">
+                    <img src="https://images.unsplash.com/photo-1560979935-2bbe0bc0c7b1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80" alt="Birthday Celebration" class="w-full h-64 object-cover">
+                </div>
+                
+                <!-- Gallery Item 6 -->
+                <div class="image-card" data-category="church">
+                    <img src="https://images.unsplash.com/photo-1564124005174-d0aa9d16b9fb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80" alt="Bible Study" class="w-full h-64 object-cover">
+                </div>
+                
+                <!-- Gallery Item 7 -->
+                <div class="image-card" data-category="travel">
+                    <img src="https://images.unsplash.com/photo-1592357915252-ae9232e21806?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80" alt="Camping Trip" class="w-full h-64 object-cover">
+                </div>
+                
+                <!-- Gallery Item 8 -->
+                <div class="image-card" data-category="family">
+                    <img src="https://images.unsplash.com/photo-1528825871115-3581a5387919?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2658&q=80" alt="Family Game Night" class="w-full h-64 object-cover">
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <a href="#" class="btn-primary">View All Photos</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Faith Corner Section -->
+    <section id="faith" class="py-20 bg-faith text-white">
+        <div class="content-container px-4 md:px-8">
+            <div class="text-center mb-12">
+                <h2 class="section-heading text-3xl md:text-4xl font-bold mb-4 text-white">Faith Corner</h2>
+                <p class="max-w-2xl mx-auto text-lg">
+                    Our faith is the foundation of our family. Here we share devotionals, Sabbath thoughts, and spiritual insights.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Faith Post 1 -->
+                <div class="bg-white rounded-lg shadow-lg p-6 text-gray-800">
+                    <h3 class="text-xl font-bold mb-3 text-primary">Weekly Devotional</h3>
+                    <p class="text-gray-600 mb-4">
+                        "Trust in the LORD with all your heart and lean not on your own understanding; in all your ways submit to him, and he will make your paths straight." - Proverbs 3:5-6
+                    </p>
+                    <p class="mb-4">
+                        In our busy lives, it's easy to rely on our own wisdom and forget to seek God's guidance. This week, let's remind ourselves to trust in the Lord completely...
+                    </p>
+                    <a href="#" class="text-primary font-medium hover:text-accent transition duration-300">Read Full Devotional →</a>
+                </div>
+                
+                <!-- Faith Post 2 -->
+                <div class="bg-white rounded-lg shadow-lg p-6 text-gray-800">
+                    <h3 class="text-xl font-bold mb-3 text-primary">Sabbath Thoughts</h3>
+                    <p class="text-gray-600 mb-4">
+                        "Remember the Sabbath day by keeping it holy." - Exodus 20:8
+                    </p>
+                    <p class="mb-4">
+                        The Sabbath is God's special gift to us - a time to rest, worship, and strengthen our relationship with Him and our loved ones. Here's how our family makes the most of this blessed day...
+                    </p>
+                    <a href="#" class="text-primary font-medium hover:text-accent transition duration-300">Read More →</a>
+                </div>
+                
+                <!-- Faith Post 3 -->
+                <div class="bg-white rounded-lg shadow-lg p-6 text-gray-800">
+                    <h3 class="text-xl font-bold mb-3 text-primary">Family Prayer Guide</h3>
+                    <p class="text-gray-600 mb-4">
+                        "Rejoice always, pray continually, give thanks in all circumstances; for this is God's will for you in Christ Jesus." - 1 Thessalonians 5:16-18
+                    </p>
+                    <p class="mb-4">
+                        Prayer is the heartbeat of our family's spiritual life. We've created this simple guide to help families develop a consistent prayer routine...
+                    </p>
+                    <a href="#" class="text-primary font-medium hover:text-accent transition duration-300">Download Prayer Guide →</a>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <a href="#" class="bg-white text-primary hover:bg-gray-100 transition duration-300 px-6 py-3 rounded-md font-semibold">Explore More Resources</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instagram Feed Section -->
+    <section class="py-16 bg-gray-100">
+        <div class="content-container px-4 md:px-8">
+            <div class="text-center mb-10">
+                <h2 class="text-2xl md:text-3xl font-bold mb-4 text-primary">Follow Our Journey</h2>
+                <p class="max-w-2xl mx-auto">
+                    Stay connected with our family adventures on Instagram. 
+                    <a href="#" class="text-accent font-medium">@MayoreFamily</a>
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2">
+                <!-- Instagram Post 1 -->
+                <div class="instagram-post overflow-hidden rounded-md">
+                    <img src="https://images.unsplash.com/photo-1546484396-fb3fc6f95f98?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80" alt="Instagram Post" class="w-full h-full object-cover">
+                </div>
+                
+                <!-- Instagram Post 2 -->
+                <div class="instagram-post overflow-hidden rounded-md">
+                    <img src="https://images.unsplash.com/photo-1679678691006-ac8e5836d983?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2526&q=80" alt="Instagram Post" class="w-full h-full object-cover">
+                </div>
+                
+                <!-- Instagram Post 3 -->
+                <div class="instagram-post overflow-hidden rounded-md">
+                    <img src="https://images.unsplash.com/photo-1478131143081-80f7f84ca84d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2938&q=80" alt="Instagram Post" class="w-full h-full object-cover">
+                </div>
+                
+                <!-- Instagram Post 4 -->
+                <div class="instagram-post overflow-hidden rounded-md">
+                    <img src="https://images.unsplash.com/photo-1674502643170-11bce50bed0a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2938&q=80" alt="Instagram Post" class="w-full h-full object-cover">
+                </div>
+                
+                <!-- Instagram Post 5 -->
+                <div class="instagram-post overflow-hidden rounded-md">
+                    <img src="https://images.unsplash.com/photo-1660298423361-8aa3f3c753a1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2787&q=80" alt="Instagram Post" class="w-full h-full object-cover">
+                </div>
+                
+                <!-- Instagram Post 6 -->
+                <div class="instagram-post overflow-hidden rounded-md">
+                    <img src="https://images.unsplash.com/photo-1490312278390-ab64016e0aa9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80" alt="Instagram Post" class="w-full h-full object-cover">
+                </div>
+            </div>
+            
+            <div class="mt-8 text-center">
+                <a href="#" class="text-primary font-medium hover:text-accent transition duration-300 flex items-center justify-center">
+                    <i class="fab fa-instagram mr-2"></i> View More on Instagram
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="py-16 bg-primary text-white">
+        <div class="content-container px-4 md:px-8">
+            <div class="max-w-2xl mx-auto text-center">
+                <h2 class="text-2xl md:text-3xl font-bold mb-4">Join Our Family Newsletter</h2>
+                <p class="mb-6">
+                    Subscribe to receive updates on our latest adventures, blog posts, and spiritual content directly in your inbox.
+                </p>
+                <form class="flex flex-col md:flex-row gap-4 justify-center">
+                    <input type="email" placeholder="Your email address" class="form-input text-gray-800 py-3 px-4 rounded-md flex-grow max-w-md" required>
+                    <button type="submit" class="bg-accent hover:bg-yellow-500 text-white font-medium py-3 px-6 rounded-md transition duration-300">
+                        Subscribe
+                    </button>
+                </form>
+                <p class="text-sm mt-4 opacity-80">
+                    We respect your privacy. Unsubscribe at any time.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="content-container px-4 md:px-8">
+            <div class="text-center mb-12">
+                <h2 class="section-heading text-3xl md:text-4xl font-bold mb-4">Get In Touch</h2>
+                <p class="max-w-2xl mx-auto text-lg">
+                    Have questions or just want to connect? We'd love to hear from you!
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div>
+                    <form class="space-y-6">
+                        <div>
+                            <label for="name" class="block mb-2 font-medium">Your Name</label>
+                            <input type="text" id="name" class="form-input" placeholder="John Doe" required>
+                        </div>
+                        <div>
+                            <label for="email" class="block mb-2 font-medium">Your Email</label>
+                            <input type="email" id="email" class="form-input" placeholder="john@example.com" required>
+                        </div>
+                        <div>
+                            <label for="subject" class="block mb-2 font-medium">Subject</label>
+                            <input type="text" id="subject" class="form-input" placeholder="How can we help?">
+                        </div>
+                        <div>
+                            <label for="message" class="block mb-2 font-medium">Message</label>
+                            <textarea id="message" rows="5" class="form-input" placeholder="Your message here..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary w-full">Send Message</button>
+                    </form>
+                </div>
+                <div class="lg:pl-8">
+                    <h3 class="text-xl font-bold mb-4 text-primary">Connect With Us</h3>
+                    <p class="mb-6">
+                        We'd love to connect with you! Feel free to reach out through the form or any of our social media channels.
+                    </p>
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-start">
+                            <i class="fas fa-envelope text-primary mt-1 mr-3"></i>
+                            <div>
+                                <h4 class="font-medium">Email</h4>
+                                <p class="text-gray-600">hello@faithfulfootprints.com</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-primary mt-1 mr-3"></i>
+                            <div>
+                                <h4 class="font-medium">Location</h4>
+                                <p class="text-gray-600">Nairobi, Kenya</p>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-primary">Follow Us</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 bg-dark text-white">
+        <div class="content-container px-4 md:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">FaithfulFootprints</h3>
+                    <p class="mb-4 text-gray-400">
+                        "Because we believe family is our world"
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-white hover:text-accent transition duration-300"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white hover:text-accent transition duration-300"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white hover:text-accent transition duration-300"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="text-white hover:text-accent transition duration-300"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-400 hover:text-white transition duration-300">Home</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition duration-300">About Us</a></li>
+                        <li><a href="#blog" class="text-gray-400 hover:text-white transition duration-300">Blog</a></li>
+                        <li><a href="#gallery" class="text-gray-400 hover:text-white transition duration-300">Gallery</a></li>
+                        <li><a href="#faith" class="text-gray-400 hover:text-white transition duration-300">Faith Corner</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition duration-300">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Newsletter</h3>
+                    <p class="mb-4 text-gray-400">
+                        Subscribe to receive updates on our latest adventures and spiritual content.
+                    </p>
+                    <form class="flex">
+                        <input type="email" placeholder="Your email" class="px-4 py-2 w-full rounded-l-md focus:outline-none text-gray-800">
+                        <button type="submit" class="bg-primary hover:bg-primary-light px-4 py-2 rounded-r-md transition duration-300">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="pt-8 mt-8 border-t border-gray-800 text-center text-gray-500 text-sm">
+                <p>&copy; 2023 FaithfulFootprints | The Mayore Family. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTop" class="scroll-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuButton = document.getElementById('menuButton');
+        const closeMenu = document.getElementById('closeMenu');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const overlay = document.getElementById('overlay');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+        
+        menuButton.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+        
+        function closeMenuFunction() {
+            mobileMenu.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+        
+        closeMenu.addEventListener('click', closeMenuFunction);
+        overlay.addEventListener('click', closeMenuFunction);
+        
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', closeMenuFunction);
+        });
+        
+        // Sticky Navigation
+        const navbar = document.getElementById('navbar');
+        let lastScrollTop = 0;
+        
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > 100) {
+                navbar.classList.add('sticky-nav');
+                
+                if (scrollTop > lastScrollTop) {
+                    navbar.classList.add('navbar-hidden');
+                } else {
+                    navbar.classList.remove('navbar-hidden');
+                }
+            } else {
+                navbar.classList.remove('sticky-nav');
+            }
+            
+            lastScrollTop = scrollTop;
+        });
+        
+        // Gallery Filter
+        const galleryTabs = document.querySelectorAll('.gallery-tab');
+        const galleryItems = document.querySelectorAll('.image-card');
+        
+        galleryTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs
+                galleryTabs.forEach(t => t.classList.remove('active'));
+                
+                // Add active class to clicked tab
+                tab.classList.add('active');
+                
+                const category = tab.getAttribute('data-category');
+                
+                galleryItems.forEach(item => {
+                    if (category === 'all' || item.getAttribute('data-category') === category) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Scroll to Top
+        const scrollToTopButton = document.getElementById('scrollToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollToTopButton.classList.add('visible');
+            } else {
+                scrollToTopButton.classList.remove('visible');
+            }
+        });
+        
+        scrollToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Smooth Scrolling for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Fade In Elements on Scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        function checkFade() {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementBottom = element.getBoundingClientRect().bottom;
+                
+                if (elementTop < window.innerHeight - 100 && elementBottom > 0) {
+                    element.classList.add('visible');
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', checkFade);
+        window.addEventListener('load', checkFade);
+    </script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Faithful Footprints | The Mayore Family</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; line-height: 1.6; background: #f9f9f9; }
+    header, footer { background: #333; color: white; padding: 1rem; text-align: center; }
+    nav a { color: white; margin: 0 1rem; text-decoration: none; }
+    .container { max-width: 1000px; margin: auto; padding: 2rem; background: white; }
+    h1, h2, h3 { color: #333; }
+    .section { margin-bottom: 2rem; }
+    .footer-links a { color: #ccc; text-decoration: none; margin-right: 10px; }
+    form input, form textarea { width: 100%; padding: 0.5rem; margin-top: 5px; margin-bottom: 1rem; }
+    form button { padding: 0.7rem 1.5rem; background: #333; color: white; border: none; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Faithful Footprints | The Mayore Family</h1>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">About Us</a>
+    <a href="#">Blog</a>
+    <a href="#">Gallery</a>
+    <a href="#">Faith Corner</a>
+    <a href="#">Contact</a>
+  </nav>
+</header>
+
+<div class="container">
+  <section class="section">
+    <h2>Welcome</h2>
+    <p>Welcome to our family's journey of faith, love, and adventure. We are the Mayore family — devoted to each other, our faith, and creating memories that last a lifetime.</p>
+  </section>
+
+  <section class="section">
+    <h2>Our Love Story</h2>
+    <p>Richard and Betty met through their church community. On May 2, 1999, they were married, beginning a life rooted in Seventh-day Adventist faith. They have three children: Shirley, Sika, and their youngest daughter.</p>
+  </section>
+
+  <section class="section">
+    <h2>Meet Our Family</h2>
+    <ul>
+      <li><strong>Richard Mayore</strong> - Father</li>
+      <li><strong>Betty Buyuka</strong> - Mother</li>
+      <li><strong>Shirley Mayore</strong> (Born: Jan 6, 2000)</li>
+      <li><strong>Sika Mayore</strong> (Born: Nov 26, 2004)</li>
+      <li><strong>Youngest Daughter</strong> (Born: Sep 12, 2009)</li>
+    </ul>
+  </section>
+
+  <section class="section">
+    <h2>Blog Highlights</h2>
+    <ul>
+      <li><strong>March 15, 2023:</strong> Our Family Adventure in the Mountains</li>
+      <li><strong>Feb 28, 2023:</strong> Sabbath Reflections: Finding Rest in a Busy World</li>
+      <li><strong>Jan 12, 2023:</strong> Cooking Together: Family Recipes We Love</li>
+    </ul>
+  </section>
+
+  <section class="section">
+    <h2>Faith Corner</h2>
+    <p><strong>Weekly Devotional:</strong> "Trust in the LORD with all your heart..." - Proverbs 3:5-6</p>
+    <p><strong>Sabbath Thoughts:</strong> "Remember the Sabbath day by keeping it holy." - Exodus 20:8</p>
+    <p><strong>Family Prayer Guide:</strong> "Rejoice always, pray continually..." - 1 Thessalonians 5:16-18</p>
+  </section>
+
+  <section class="section">
+    <h2>Our Family Timeline</h2>
+    <ul>
+      <li><strong>May 2, 1999:</strong> Richard and Betty got married</li>
+      <li><strong>Jan 6, 2000:</strong> Shirley was born</li>
+      <li><strong>Nov 26, 2004:</strong> Sika was born</li>
+      <li><strong>Sep 12, 2009:</strong> Youngest daughter was born</li>
+    </ul>
+  </section>
+
+  <section class="section">
+    <h2>Contact Us</h2>
+    <form>
+      <label>Your Name</label>
+      <input type="text" placeholder="John Doe">
+      <label>Your Email</label>
+      <input type="email" placeholder="john@example.com">
+      <label>Subject</label>
+      <input type="text" placeholder="How can we help?">
+      <label>Message</label>
+      <textarea placeholder="Your message here..." rows="4"></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+</div>
+
+<footer>
+  <p>FaithfulFootprints — "Because we believe family is our world"</p>
+  <div class="footer-links">
+    <a href="#">Instagram</a> |
+    <a href="#">Facebook</a> |
+    <a href="#">YouTube</a>
+  </div>
+  <p>&copy; 2023 FaithfulFootprints | The Mayore Family. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
