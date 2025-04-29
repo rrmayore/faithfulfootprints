@@ -11,7 +11,14 @@
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&amp;family=Playfair+Display:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
-<link href="css/style.css" rel="stylesheet"/></head>
+<link href="css/style.css" rel="stylesheet"/>
+<style>
+html {
+  scroll-behavior: smooth;
+}
+</style>
+
+</head>
 <body>
 <!-- Mobile Menu -->
 <div class="mobile-menu" id="mobileMenu">
@@ -209,7 +216,7 @@
 <p class="text-gray-600 mb-4">
                             Last weekend, we packed our bags and headed to the mountains for a family retreat. The views were breathtaking...
                         </p>
-<a class="text-primary font-medium hover:text-accent transition duration-300" href="#">Read More →</a>
+<a class="text-primary font-medium hover:text-accent transition duration-300 cursor-pointer" onclick="toggleBlogContent('blog-extra-0')">Read More →</a><div id="blog-extra-0" style="display:none;" class="mt-2 text-gray-700 text-sm">Here’s the full story of our mountain retreat—what we packed, how we bonded, and the incredible views that inspired us.</div>
 </div>
 </div>
 <!-- Blog Post 2 -->
@@ -226,7 +233,7 @@
 <p class="text-gray-600 mb-4">
                             In today's fast-paced world, the Sabbath offers us a sacred opportunity to pause and reconnect...
                         </p>
-<a class="text-primary font-medium hover:text-accent transition duration-300" href="#">Read More →</a>
+<a class="text-primary font-medium hover:text-accent transition duration-300 cursor-pointer" onclick="toggleBlogContent('blog-extra-1')">Read More →</a><div id="blog-extra-1" style="display:none;" class="mt-2 text-gray-700 text-sm">We explore how our family keeps the Sabbath holy each week, with music, rest, reflection, and togetherness.</div>
 </div>
 </div>
 <!-- Blog Post 3 -->
@@ -243,7 +250,7 @@
 <p class="text-gray-600 mb-4">
                             The kitchen is the heart of our home. Here are some of our favorite family recipes that bring us together...
                         </p>
-<a class="text-primary font-medium hover:text-accent transition duration-300" href="#">Read More →</a>
+<a class="text-primary font-medium hover:text-accent transition duration-300 cursor-pointer" onclick="toggleBlogContent('blog-extra-2')">Read More →</a><div id="blog-extra-2" style="display:none;" class="mt-2 text-gray-700 text-sm">A few of our treasured plant-based family recipes and kitchen traditions that bring joy to our home.</div>
 </div>
 </div>
 </div>
@@ -530,7 +537,19 @@
 <button class="scroll-to-top" id="scrollToTop">
 <i class="fas fa-arrow-up"></i>
 </button>
-<script src="js/script.js"></script></body>
+<script src="js/script.js"></script>
+<script>
+function toggleBlogContent(id) {
+  const content = document.getElementById(id);
+  if (content.style.display === "none" || content.style.display === "") {
+    content.style.display = "block";
+  } else {
+    content.style.display = "none";
+  }
+}
+</script>
+
+</body>
 </html>
 <!DOCTYPE html>
 
@@ -550,6 +569,13 @@
     form input, form textarea { width: 100%; padding: 0.5rem; margin-top: 5px; margin-bottom: 1rem; }
     form button { padding: 0.7rem 1.5rem; background: #333; color: white; border: none; }
   </style>
+
+<style>
+html {
+  scroll-behavior: smooth;
+}
+</style>
+
 </head>
 <body>
 <header>
@@ -629,5 +655,17 @@
 </div>
 <p>© 2023 FaithfulFootprints | The Mayore Family. All rights reserved.</p>
 </footer>
+
+<script>
+function toggleBlogContent(id) {
+  const content = document.getElementById(id);
+  if (content.style.display === "none" || content.style.display === "") {
+    content.style.display = "block";
+  } else {
+    content.style.display = "none";
+  }
+}
+</script>
+
 </body>
 </html>
